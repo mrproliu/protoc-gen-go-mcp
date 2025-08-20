@@ -23,7 +23,6 @@ import (
 	"github.com/mrproliu/protoc-gen-go-mcp/pkg/runtime"
 	testdata "github.com/mrproliu/protoc-gen-go-mcp/pkg/testdata/gen/go/testdata"
 	. "github.com/onsi/gomega"
-	jsonschema "github.com/sa
 	jsonschema "github.com/santhosh-tekuri/jsonschema/v5"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
