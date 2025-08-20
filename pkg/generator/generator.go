@@ -58,6 +58,7 @@ package {{ .GoPackage }}
 
 import (
   "context"
+  "fmt"
   "github.com/mark3labs/mcp-go/mcp"
   mcpserver "github.com/mark3labs/mcp-go/server"
   "encoding/json"
