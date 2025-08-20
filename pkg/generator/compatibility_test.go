@@ -21,9 +21,9 @@ import (
 	"time"
 
 	"github.com/mrproliu/protoc-gen-go-mcp/pkg/runtime"
-	testdata "github.com/mrproliu/protoc-gen-go-mcp/pkg/testdata/gen/go/testdata"
+	"github.com/mrproliu/protoc-gen-go-mcp/pkg/testdata/gen/go/testdata"
 	. "github.com/onsi/gomega"
-	jsonschema "github.com/santhosh-tekuri/jsonschema/v5"
+	"github.com/santhosh-tekuri/jsonschema/v5"
 	"google.golang.org/protobuf/encoding/protojson"
 	"google.golang.org/protobuf/proto"
 	anypb "google.golang.org/protobuf/types/known/anypb"
