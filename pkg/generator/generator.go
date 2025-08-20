@@ -241,12 +241,6 @@ func ForwardToConnect{{$key}}Client(s *mcpserver.MCPServer, client Connect{{$key
   for _, opt := range opts {
     opt(config)
   }
-  // If BeforeToolCall is configured, call it before executing the tool
-  if config.BeforeToolCall != nil {
-    if err := config.BeforeToolCall({{$tool_name}}ToolOpenAI, &request); err != nil {
-	  return nil, fmt.Errorf("before tool call error: %w", err)
-    }
-  }
 
   {{- range $tool_name, $tool_val := $val }}
   {{$tool_name}}Tool := {{$key}}_{{$tool_name}}Tool
@@ -257,7 +251,12 @@ func ForwardToConnect{{$key}}Client(s *mcpserver.MCPServer, client Connect{{$key
   
   s.AddTool({{$tool_name}}Tool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
     var req {{$tool_val.RequestType}}
-
+    // If BeforeToolCall is configured, call it before executing the tool
+    if config.BeforeToolCall != nil {
+      if err := config.BeforeToolCall({{$tool_name}}ToolOpenAI, &request); err != nil {
+	    return nil, fmt.Errorf("before tool call error: %w", err)
+      }
+    }
     message := request.GetArguments()
 
     // Extract extra properties if configured
@@ -298,12 +297,6 @@ func ForwardTo{{$key}}Client(s *mcpserver.MCPServer, client {{$key}}Client, opts
   for _, opt := range opts {
     opt(config)
   }
-  // If BeforeToolCall is configured, call it before executing the tool
-  if config.BeforeToolCall != nil {
-    if err := config.BeforeToolCall({{$tool_name}}ToolOpenAI, &request); err != nil {
-	  return nil, fmt.Errorf("before tool call error: %w", err)
-    }
-  }
 
   {{- range $tool_name, $tool_val := $val }}
   {{$tool_name}}Tool := {{$key}}_{{$tool_name}}Tool
@@ -314,7 +307,12 @@ func ForwardTo{{$key}}Client(s *mcpserver.MCPServer, client {{$key}}Client, opts
   
   s.AddTool({{$tool_name}}Tool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
     var req {{$tool_val.RequestType}}
-
+    // If BeforeToolCall is configured, call it before executing the tool
+    if config.BeforeToolCall != nil {
+      if err := config.BeforeToolCall({{$tool_name}}ToolOpenAI, &request); err != nil {
+	    return nil, fmt.Errorf("before tool call error: %w", err)
+      }
+    }
     message := request.GetArguments()
 
     // Extract extra properties if configured
