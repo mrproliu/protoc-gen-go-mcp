@@ -76,15 +76,6 @@ var (
 {{- range $key, $val := .ToolsOpenAI }}
   {{$key}}ToolOpenAI = {{ printf "%#v" $val }}
 {{- end }}
-
-  AllTools = []mcp.Tool{
-{{- range $key, $val := .Tools }}
-	{{$key}}Tool,
-{{- end }}
-{{- range $key, $val := .ToolsOpenAI }}
-	{{$key}}ToolOpenAI,
-{{- end }}
-  }
 )
 
 {{- range $serviceName, $methods := .Services }}
