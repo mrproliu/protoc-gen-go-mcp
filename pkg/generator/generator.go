@@ -307,6 +307,7 @@ func ForwardTo{{$key}}Client(s *mcpserver.MCPServer, client {{$key}}Client, opts
   
   s.AddTool({{$tool_name}}Tool, func(ctx context.Context, request mcp.CallToolRequest) (*mcp.CallToolResult, error) {
     var req {{$tool_val.RequestType}}
+
     // If BeforeToolCall is configured, call it before executing the tool
     if config.BeforeToolCall != nil {
       if err := config.BeforeToolCall({{$tool_name}}ToolOpenAI, &request); err != nil {
