@@ -253,7 +253,7 @@ func ForwardToConnect{{$key}}Client(s *mcpserver.MCPServer, client Connect{{$key
     var req {{$tool_val.RequestType}}
     // If BeforeToolCall is configured, call it before executing the tool
     if config.BeforeToolCall != nil {
-      if err := config.BeforeToolCall({{$tool_name}}ToolOpenAI, &request); err != nil {
+      if err := config.BeforeToolCall({{$tool_name}}Tool, &request); err != nil {
 	    return nil, fmt.Errorf("before tool call error: %w", err)
       }
     }
@@ -310,7 +310,7 @@ func ForwardTo{{$key}}Client(s *mcpserver.MCPServer, client {{$key}}Client, opts
 
     // If BeforeToolCall is configured, call it before executing the tool
     if config.BeforeToolCall != nil {
-      if err := config.BeforeToolCall({{$tool_name}}ToolOpenAI, &request); err != nil {
+      if err := config.BeforeToolCall({{$tool_name}}Tool, &request); err != nil {
 	    return nil, fmt.Errorf("before tool call error: %w", err)
       }
     }
